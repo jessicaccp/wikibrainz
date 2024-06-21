@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import Card from "./components/Card";
 
 export default function App() {
   const [url, setUrl] = useState(
-    `https://musicbrainz.org/ws/2/artist/?query=artist:"the+beatles"&limit=10&offset=0&fmt=json`
+    `https://musicbrainz.org/ws/2/artist/?query=artist:"the+beatles"&limit=12&offset=0&fmt=json`
   );
   const [keyword, setKeyword] = useState("");
   const [data, setData] = useState([]);
@@ -21,8 +22,8 @@ export default function App() {
       data.artists.forEach((artist, key) =>
         setResult((prev) => [
           ...prev,
-          <li key={key}>
-            {artist.name} - {artist.disambiguation}
+          <li id="result-card" key={key}>
+            <Card artist={artist} />
           </li>,
         ])
       );
@@ -35,21 +36,26 @@ export default function App() {
   const handleSubmit = (event) => {
     if (event.key === "Enter") {
       setUrl(
-        `https://musicbrainz.org/ws/2/artist/?query=artist:"${keyword}"&limit=10&offset=0&fmt=json`
+        `https://musicbrainz.org/ws/2/artist/?query=artist:"${keyword.replace(
+          " ",
+          "+"
+        )}"&limit=12&offset=0&fmt=json`
       );
     }
   };
 
   return (
-    <div id="container">
+    <>
       <input
+        id="search"
         type="search"
         name="search"
+        placeholder="Search"
         onChange={handleInput}
         onSubmit={handleSubmit}
         onKeyDown={handleSubmit}
       />
-      <div id="result">{result}</div>
-    </div>
+      <div id="results">{result}</div>
+    </>
   );
 }

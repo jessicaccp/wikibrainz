@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+input {
+  font-family: sans-serif;
+  color: #333;
+  font-size: 1rem;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
+  background-color: #eee;
+}
+
+#root {
+  /* width: 50%; */
+  /* height: 50%; */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0.25rem 0.25rem #ddd;
+  overflow-y: scroll;
+}
+
+#search {
+  /* flex-grow: 1; */
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid black;
+}
+
+#results {
+  /* flex-grow: 1; */
+  margin: 1rem;
+  margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* justify-content: space-between; */
+}
+
+#result-card {
+  max-width: 200px;
+  width: 200px;
+
+  /* width: 15rem; */
+  /* width: 30%; */
+  /* max-width: 30%; */
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  padding: 1rem;
+  list-style: none;
+}
