@@ -1,3 +1,3 @@
 # wikibrainz
 
-MusicaBrainz API interface.
+[MusicBrainz API](https://musicbrainz.org/doc/MusicBrainz_API) interface.
