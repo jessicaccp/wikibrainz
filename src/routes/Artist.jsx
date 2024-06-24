@@ -2,6 +2,7 @@ import api from "../services/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ArtistData from "../resources/ArtistData";
+import ReleaseRels from "../resources/ArtistReleaseData";
 
 export default function Artist() {
   const { artist } = useParams();
@@ -18,7 +19,12 @@ export default function Artist() {
   if (error) return <p>Error: {error.message}</p>;
   if (!data.artists) return <p>Loading...</p>;
 
-  console.log(data);
+  // console.log(data);
 
-  return <ArtistData artist={data.artists[0]} />;
+  return (
+    <>
+      <ArtistData artist={data.artists[0]} />
+      <ReleaseRels id={data.artists[0].id} />
+    </>
+  );
 }
